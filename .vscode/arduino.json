@@ -1,6 +1,0 @@
-{
-    "configuration": "cpu=atmega2560",
-    "board": "arduino:avr:mega",
-    "sketch": "src/engine_control/engine_control.ino",
-    "port": "COM5"
-}
