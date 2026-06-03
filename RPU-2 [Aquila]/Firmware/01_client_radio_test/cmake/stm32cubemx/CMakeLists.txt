@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
-# Enable CMake support for ASM and C languages
-enable_language(C ASM)
+# Enable CMake support for ASM, C, and C++ languages
+enable_language(C CXX ASM)
 # STM32CubeMX generated symbols (macros)
 set(MX_Defines_Syms 
 	CORE_CM4 
@@ -31,7 +31,7 @@ set(MX_Application_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../SubGHz_Phy/Target/radio_board_if.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../SubGHz_Phy/App/app_subghz_phy.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../SubGHz_Phy/App/subghz_phy_app.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/main.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/stm32_lpm_if.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/sys_app.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/timer_if.c
@@ -98,7 +98,9 @@ set(MX_LINK_DIRS
 set(MX_LINK_LIBS 
     STM32_Drivers
     ${TOOLCHAIN_LINK_LIBRARIES}
-    Utilities	SubGHz_Phy	
+    Utilities
+	SubGHz_Phy
+	
 )
 # Interface library for includes and symbols
 add_library(stm32cubemx INTERFACE)
