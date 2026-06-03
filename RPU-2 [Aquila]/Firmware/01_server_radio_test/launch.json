@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "STM32 Debug (Rocket)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "stlink",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/Debug/RocketStuff.elf",
+            "device": "STM32WL55JC",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "v3": true,
+            "armToolchainPath": "/usr/bin",
+            "gdbPath": "/usr/bin/arm-none-eabi-gdb",
+            "serverpath": "/opt/stm32cubeclt/STLink-gdb-server/bin/ST-LINK_gdbserver",
+            
+            "stm32cubeprogrammer": "/opt/stm32cubeclt/STM32CubeProgrammer/bin"
+        }
+    ]
+}

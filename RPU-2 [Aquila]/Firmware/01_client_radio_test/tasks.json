@@ -1,0 +1,43 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Build RocketStuff Debug",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "${workspaceFolder}/RocketStuff/build/Debug",
+        "-j",
+        "8"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "shell",
+      "label": "CubeProg: Flash RocketStuff (SWD)",
+      "command": "STM32_Programmer_CLI",
+      "args": [
+        "--connect",
+        "port=swd",
+        "--download",
+        "${workspaceFolder}/RocketStuff/build/Debug/RocketStuff.elf",
+        "--hardRst"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "dependsOn": "Build RocketStuff Debug"
+    }
+  ]
+}

@@ -166,6 +166,61 @@
       ]
     },
     {
+      "name": "st-arm-clang",
+      "version": "21.1.1+st.7",
+      "platform": "aarch64-darwin",
+      "selected_by": [
+        {
+          "name": "st-arm-clang",
+          "version": "21.1.1+st.7"
+        }
+      ]
+    },
+    {
+      "name": "st-arm-clang",
+      "version": "21.1.1+st.7",
+      "platform": "x86_64-darwin",
+      "selected_by": [
+        {
+          "name": "st-arm-clang",
+          "version": "21.1.1+st.7"
+        }
+      ]
+    },
+    {
+      "name": "st-arm-clang",
+      "version": "21.1.1+st.7",
+      "platform": "x86_64-linux",
+      "selected_by": [
+        {
+          "name": "st-arm-clang",
+          "version": "21.1.1+st.7"
+        }
+      ]
+    },
+    {
+      "name": "st-arm-clang",
+      "version": "21.1.1+st.7",
+      "platform": "x86_64-windows",
+      "selected_by": [
+        {
+          "name": "st-arm-clang",
+          "version": "21.1.1+st.7"
+        }
+      ]
+    },
+    {
+      "name": "st-arm-clang-21_1_1-description",
+      "version": "1.0.1+st.1",
+      "platform": "all",
+      "selected_by": [
+        {
+          "name": "st-arm-clang-21_1_1-description",
+          "version": ">=0.0.1"
+        }
+      ]
+    },
+    {
       "name": "st-arm-clangd",
       "version": "21.1.0+st.2",
       "platform": "darwin",
