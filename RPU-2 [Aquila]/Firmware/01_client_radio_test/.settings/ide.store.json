@@ -1,0 +1,10 @@
+{
+  "source": {
+    "sourceType": "STM32CubeMX"
+  },
+  "board": "NUCLEO-WL55JC2",
+  "device": "STM32WL55JCI6",
+  "toolchain": "GCC",
+  "core": "Cortex-M4",
+  "order": 0
+}
