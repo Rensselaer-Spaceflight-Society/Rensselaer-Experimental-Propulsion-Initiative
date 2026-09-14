@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "MAX4543")(type "KiCad")(uri "${KIPRJMOD}/MAX4543.kicad_sym")(options "")(descr ""))
+  (lib (name "AmazonBuck")(type "KiCad")(uri "${KIPRJMOD}/AmazonBuck.kicad_sym")(options "")(descr ""))
+)
