@@ -2215,16 +2215,6 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 30.48) (xy 121.92 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0b40b4b6-2a8c-4050-957c-ef95b02525e8")
-	)
-	(wire
-		(pts
 			(xy 40.64 160.02) (xy 40.64 157.48)
 		)
 		(stroke
@@ -2232,6 +2222,16 @@
 			(type default)
 		)
 		(uuid "0d1f86f6-1a8c-436d-8b84-c851cd2fa343")
+	)
+	(wire
+		(pts
+			(xy 102.87 38.1) (xy 116.84 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1934f91c-4238-4e9e-834c-3b4c9afd4603")
 	)
 	(wire
 		(pts
@@ -2405,16 +2405,6 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 30.48) (xy 101.6 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6c95f7e1-41a5-49f1-b356-2e272ea1f4ff")
-	)
-	(wire
-		(pts
 			(xy 144.78 78.74) (xy 88.9 78.74)
 		)
 		(stroke
@@ -2422,26 +2412,6 @@
 			(type default)
 		)
 		(uuid "77dede54-c978-4d98-a8ea-5b2504241b04")
-	)
-	(wire
-		(pts
-			(xy 123.19 45.72) (xy 123.19 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a538a28-3253-4907-ab79-3c3e28b7f2cc")
-	)
-	(wire
-		(pts
-			(xy 100.33 45.72) (xy 100.33 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7c171fe6-05f8-4dd3-91d1-0144051ec074")
 	)
 	(wire
 		(pts
@@ -2545,16 +2515,6 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 22.86) (xy 121.92 22.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ba0ded0d-a2d6-4e0e-867b-c3b11327a89c")
-	)
-	(wire
-		(pts
 			(xy 88.9 53.34) (xy 111.76 53.34)
 		)
 		(stroke
@@ -2565,7 +2525,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 45.72) (xy 115.57 45.72)
+			(xy 111.76 45.72) (xy 116.84 45.72)
 		)
 		(stroke
 			(width 0)
@@ -2615,7 +2575,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 45.72) (xy 111.76 45.72)
+			(xy 102.87 45.72) (xy 111.76 45.72)
 		)
 		(stroke
 			(width 0)
@@ -2815,17 +2775,17 @@
 	)
 	(global_label "Discharge"
 		(shape input)
-		(at 95.25 22.86 180)
+		(at 110.49 38.1 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "e7d4d481-50d8-4599-a843-2702a6cf4538")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 82.9515 22.86 0)
+			(at 110.49 25.8015 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2833,7 +2793,7 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 	)
@@ -3011,7 +2971,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 104.14 45.72 90)
+		(at 102.87 41.91 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3022,7 +2982,7 @@
 		(fields_autoplaced yes)
 		(uuid "14805e90-0bd9-4366-8ce1-30713377e5f6")
 		(property "Reference" "R4"
-			(at 102.8699 43.18 0)
+			(at 105.41 40.6399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3033,7 +2993,7 @@
 			)
 		)
 		(property "Value" "R_US"
-			(at 105.4099 43.18 0)
+			(at 105.41 43.1799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3043,8 +3003,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 104.394 44.704 90)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 103.886 42.164 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3055,7 +3015,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 104.14 45.72 0)
+			(at 102.87 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3066,7 +3026,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 104.14 45.72 0)
+			(at 102.87 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3243,88 +3203,6 @@
 			(project "REDS"
 				(path "/b41176b4-ee35-4242-bb55-a96abde584dd"
 					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 119.38 45.72 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "22748a76-153e-41ac-ae39-bd56e2d95921")
-		(property "Reference" "R3"
-			(at 118.1099 43.18 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "R_US"
-			(at 120.6499 43.18 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 119.634 44.704 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 119.38 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 119.38 45.72 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "31615c68-d75e-46f7-bc2a-6d11844e84a8")
-		)
-		(pin "1"
-			(uuid "b5906eaf-cc34-43a7-aac4-15f332b56a5b")
-		)
-		(instances
-			(project "REDS"
-				(path "/b41176b4-ee35-4242-bb55-a96abde584dd"
-					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -3859,7 +3737,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_WAGO:TerminalBlock_WAGO_804-303_1x03_P7.50mm_45Degree"
 			(at 162.56 141.986 0)
 			(hide yes)
 			(show_name no)
@@ -4069,7 +3947,7 @@
 	)
 	(symbol
 		(lib_id "Device:D")
-		(at 121.92 26.67 270)
+		(at 116.84 41.91 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4080,27 +3958,29 @@
 		(fields_autoplaced yes)
 		(uuid "87f413f8-f80d-4b9a-af68-0cbe9f3cb704")
 		(property "Reference" "D3"
-			(at 115.57 26.67 0)
+			(at 119.38 40.6399 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Value" "D"
-			(at 118.11 26.67 0)
+			(at 119.38 43.1799 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 121.92 26.67 0)
+		(property "Footprint" "Diode_THT:D_DO-201_P15.24mm_Horizontal"
+			(at 116.84 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4111,7 +3991,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 121.92 26.67 0)
+			(at 116.84 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4122,7 +4002,7 @@
 			)
 		)
 		(property "Description" "Diode"
-			(at 121.92 26.67 0)
+			(at 116.84 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4133,7 +4013,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 121.92 26.67 0)
+			(at 116.84 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4144,7 +4024,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 121.92 26.67 0)
+			(at 116.84 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4303,7 +4183,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_WAGO:TerminalBlock_WAGO_804-302_1x02_P7.50mm_45Degree"
 			(at 43.18 165.1 0)
 			(hide yes)
 			(show_name no)
@@ -4385,7 +4265,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 149.86 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -4569,7 +4449,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 101.854 64.516 90)
 			(hide yes)
 			(show_name no)
@@ -4612,107 +4492,6 @@
 			(project "REDS"
 				(path "/b41176b4-ee35-4242-bb55-a96abde584dd"
 					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 101.6 26.67 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "aabc9dda-b47f-4704-8d16-a83675b72f64")
-		(property "Reference" "D4"
-			(at 104.902 26.416 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "D"
-			(at 107.442 26.416 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 101.6 26.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 101.6 26.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Diode"
-			(at 101.6 26.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 101.6 26.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 101.6 26.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "df01e0ff-a27f-4e4a-85ea-0797eafc85bd")
-		)
-		(pin "1"
-			(uuid "ad4ecf76-65be-4e14-87cf-20d8ce43eb9a")
-		)
-		(instances
-			(project "REDS"
-				(path "/b41176b4-ee35-4242-bb55-a96abde584dd"
-					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -5079,7 +4858,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 144.78 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -5160,7 +4939,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 115.824 108.966 90)
 			(hide yes)
 			(show_name no)
