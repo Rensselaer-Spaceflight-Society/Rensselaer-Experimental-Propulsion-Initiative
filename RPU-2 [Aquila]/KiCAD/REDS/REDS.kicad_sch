@@ -2921,7 +2921,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "20k"
+		(property "Value" "1k"
 			(at 102.87 53.3399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4579,7 +4579,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "16k"
+		(property "Value" "2.2k"
 			(at 102.87 66.0399 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4973,7 +4973,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 147.32 85.0962 0)
 			(show_name no)
 			(do_not_autoplace no)
