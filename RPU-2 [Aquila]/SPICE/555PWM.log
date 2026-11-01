@@ -1,0 +1,15 @@
+LTspice 26.0.2 for Windows
+Circuit: C:\Users\ziggy\OneDrive\Documents\RPU-2\Rensselaer-Experimental-Propulsion-Initiative\RPU-2 [Aquila]\SPICE\555PWM.net
+Start Time: Sun Oct 18 15:06:25 2026
+solver = Normal
+Maximum thread count: 22
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 0.205 seconds.
+
+Files loaded:
+C:\Users\ziggy\OneDrive\Documents\RPU-2\Rensselaer-Experimental-Propulsion-Initiative\RPU-2 [Aquila]\SPICE\555PWM.net
+C:\Users\ziggy\AppData\Local\LTspice\lib\sub\NE555.sub
+
