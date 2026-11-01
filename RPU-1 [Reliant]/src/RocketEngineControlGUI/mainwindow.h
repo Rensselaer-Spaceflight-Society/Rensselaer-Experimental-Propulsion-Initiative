@@ -16,7 +16,7 @@ class MainWindow;
 QT_END_NAMESPACE
 
 #define EVENT_POLL_DURATION_MS 10
-#define COUNTDOWN_LENGTH_MS -60000 // Negative for Countdown
+#define COUNTDOWN_LENGTH_MS -40000 // Negative for Countdown
 #define PRESURIZE_FUEL_POINT_MS -30000 // Fuel Pressurization at T-30s
 #define AUTO_HOLD_POINT_MS -20000 // Holds at T-30s
 #define INERT_FLUSH_POINT_MS -10000 // Inert Flush at T-10s

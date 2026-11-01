@@ -14,6 +14,7 @@
 #define FUEL_VALVE_OPEN_DELAY_MS 250
 #define SERVO_VALVE_OPEN_POSITION 180
 #define SERVO_VALVE_CLOSED_POSITION 0
+#define FUEL_PRESSURIZATION_DELAY 3000
 
 
 constexpr char COMMS_ESTABLISHED[] = "CtrlActi";
@@ -36,7 +37,8 @@ enum class EngineStates {
   LOG_START,
   PRE_BURN_NITROGEN_FLUSH_STARTED,
   PRE_BURN_NITROGEN_FLUSH_FINISHED,
-  FUEL_PRESSURIZATION,
+  FUEL_PRESSURIZATION_STARTED,
+  FUEL_PRESSURIZATION_FINISHED,
   OXIDIZER_OPEN,
   IGNITION,
   SHUTDOWN_NITROGEN_FLUSH_STARTED,
@@ -154,7 +156,7 @@ void handleCommand(char *command, EngineStates &currentState, unsigned int &last
   }
 
   if (!strcmp(command, PRES_FUEL)) {
-    if (currentState == EngineStates::FUEL_PRESSURIZATION) {
+    if (currentState == EngineStates::FUEL_PRESSURIZATION_STARTED || currentState == EngineStates::FUEL_PRESSURIZATION_FINISHED) {
       commandRepeats++;
       SerialPort.write(PRES_FUEL, COMMAND_SIZE_BYTES);
       SerialPort.flush();
@@ -164,9 +166,9 @@ void handleCommand(char *command, EngineStates &currentState, unsigned int &last
     if (currentState == EngineStates::LOG_START) {
       commandRepeats = 0;
       SerialPort.write(PRES_FUEL, COMMAND_SIZE_BYTES);
-      openValve(PRESFUELVALVE);
       openValve(SHUTDOWN_VALVE);
-      currentState = EngineStates::FUEL_PRESSURIZATION;
+      lastEventTime = millis();
+      currentState = EngineStates::FUEL_PRESSURIZATION_STARTED;
       SerialPort.flush();
       return;
     }
@@ -187,7 +189,7 @@ void handleCommand(char *command, EngineStates &currentState, unsigned int &last
     }
 
     // if (currentState == EngineStates::LOG_START || currentState == EngineStates::SHUTDOWN_CONFIRMED) {
-    if (currentState == EngineStates::FUEL_PRESSURIZATION) {
+    if (currentState == EngineStates::FUEL_PRESSURIZATION_FINISHED) {
       commandRepeats = 0;
       SerialPort.write(INERT_FLUSH, COMMAND_SIZE_BYTES);
       openValve(NITROGENVALVE);
@@ -256,6 +258,8 @@ void handleCommand(char *command, EngineStates &currentState, unsigned int &last
 
     // If we have not yet gotten to the state where fuel / oxidizer has flown into the
     // lines then we can just directly transition into the shutdown confirmed state.
+    closeValve(SHUTDOWN_VALVE);
+    closeValve(PRESFUELVALVE);
 
     currentState = EngineStates::SHUTDOWN_CONFIRMED;
     SerialPort.write(SHUTDOWN, COMMAND_SIZE_BYTES);

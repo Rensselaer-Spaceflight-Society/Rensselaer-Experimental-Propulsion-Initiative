@@ -36,11 +36,19 @@ float read_loadcell(HX711 &scale) {
   return load_cell;
 }
 
-float processPressureValue(int analogSignal) {
+float processPressureValue500PSIG(int analogSignal) {
   // 0.5v -> 0 PSI
   // 4.5v -> 500 PSI
   float voltage = analogSignal * (5.0 / 1023.0);
   float psi = (voltage - 0.5) * (500 / 4.0);  // Convert to PSI
+  return psi;
+}
+
+float processPressureValue1000PSIG(int analogSignal) {
+  // 0.5v -> 0 PSI
+  // 4.5v -> 1000 PSI
+  float voltage = analogSignal * (5.0 / 1023.0);
+  float psi = (voltage - 0.5) * (1000 / 4.0);  // Convert to PSI
   return psi;
 }
 
@@ -63,11 +71,11 @@ void readSensorData(Sensors &sensorData) {
   sensorData.loadCell = read_loadcell(scale);
 
   sensorData.pressure[0] = 0; // This sensor is unused and so we always return 0.
-  sensorData.pressure[1] = processPressureValue(analogRead(PRESSSEN2));
-  sensorData.pressure[2] = processPressureValue(analogRead(PRESSSEN3));
-  sensorData.pressure[3] = processPressureValue(analogRead(PRESSSEN4));
-  sensorData.pressure[4] = processPressureValue(analogRead(PRESSSEN5));
-  sensorData.pressure[5] = processPressureValue(analogRead(PRESSSEN6));
+  sensorData.pressure[1] = processPressureValue500PSIG(analogRead(PRESS_FUEL_FEED));
+  sensorData.pressure[2] = processPressureValue500PSIG(analogRead(PRESS_FUEL_TANK));
+  sensorData.pressure[3] = processPressureValue500PSIG(analogRead(PRESS_FUEL_LINE));
+  sensorData.pressure[4] = processPressureValue1000PSIG(analogRead(PRESS_OXY_TANK));
+  sensorData.pressure[5] = processPressureValue1000PSIG(analogRead(PRESS_OXY_LINE));
 
   sensorData.thermocouple[0] = processThermocoupleValue(analogRead(THERMOCPL1));
   sensorData.thermocouple[1] = processThermocoupleValue(analogRead(THERMOCPL2));

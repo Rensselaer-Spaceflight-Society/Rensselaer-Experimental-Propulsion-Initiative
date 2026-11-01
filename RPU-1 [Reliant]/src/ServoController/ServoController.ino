@@ -2,13 +2,14 @@
 
 #define OXIDIZER_VALVE_SERVO_PIN 8
 #define OXIDIZER_VALVE_OPEN_POSITION 10
-#define OXIDIZER_VALVE_CLOSED_POSITION 105;
+#define OXIDIZER_VALVE_CLOSED_POSITION 105
 #define SERVO_STATUS_PIN 3
 
 Servo oxidizer_valve;
 
 void setup() {
   oxidizer_valve.attach(OXIDIZER_VALVE_SERVO_PIN);
+  oxidizer_valve.write(OXIDIZER_VALVE_CLOSED_POSITION);
   pinMode(SERVO_STATUS_PIN, INPUT);
 }
 

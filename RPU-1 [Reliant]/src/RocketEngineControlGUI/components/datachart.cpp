@@ -24,15 +24,15 @@ DataChart::DataChart(QWidget *parent)
     axisX->setLabelFormat("%.2f");
     axisX->setTickCount(5);
     axisX->setRange(minXValue, maxXValue);
-    axisX->setTitleBrush(QColor(0xffefefef));
-    axisX->setLabelsColor(QColor(0xffefefef));
+    axisX->setTitleBrush(QColor(0xFF1A1A1A));
+    axisX->setLabelsColor(QColor(0xFF1A1A1A));
     axisX->setTitleText("Time (s)");
 
     axisY->setLabelFormat("%.2f");
     axisY->setTickCount(5);
     axisY->setRange(0, maxYValue);
-    axisY->setTitleBrush(QColor(0xffefefef));
-    axisY->setLabelsColor(QColor(0xffefefef));
+    axisY->setTitleBrush(QColor(0xFF1A1A1A));
+    axisY->setLabelsColor(QColor(0xff1A1A1A));
 
     // Configure series
     series->setLowerSeries(lowerSeries);
@@ -50,7 +50,7 @@ DataChart::DataChart(QWidget *parent)
 
     // Chart appearance
     chart->setBackgroundBrush(QColor(0,0,0,0));
-    chart->setTitleBrush(QColor(0xffefefef));
+    chart->setTitleBrush(QColor(0xFF1A1A1A));
     chart->legend()->setVisible(false);
     chart->setMargins(QMargins(0,4,0,0));
 

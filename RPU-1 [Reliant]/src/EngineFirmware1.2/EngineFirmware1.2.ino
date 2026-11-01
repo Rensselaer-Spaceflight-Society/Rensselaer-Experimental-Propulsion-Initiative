@@ -1,10 +1,10 @@
-#define PRODUCTION false
+#define PRODUCTION true
 #define ENABLE_LOGGING true
 #define READ_SENSORS true
 #define ENABLE_PINGS false
 
 #if PRODUCTION
-#define BAUD_RATE 38400
+#define BAUD_RATE 76800
 #define ENABLE_LOGGING true  // Production should always have logging enabled
 #define ENABLE_PINGS true    // Production should always have pings
 #define READ_SENSORS true    // Production should always read from sensors
@@ -29,14 +29,14 @@ uint64_t lastDataTransmissionTime = 0;
 
 
 void setup() {
+  setupPins();
+  resetPins();
   Serial.begin(9600);
   SerialPort.begin(BAUD_RATE);
   while (!SerialPort) {
     ;
   }
-  setupPins();
   Serial.println("Setup Resetting Pins");
-  resetPins();
   lastPingTime = millis();
   srand(analogRead(15));
 }
@@ -61,7 +61,7 @@ void loop() {
   }
 
   // If we should be validating data, then start validating that data
-  if (currentState >= EngineStates::FUEL_PRESSURIZATION && currentState < EngineStates::SHUTDOWN_NITROGEN_FLUSH_STARTED && ENABLE_LOGGING) {
+  if (currentState >= EngineStates::FUEL_PRESSURIZATION_STARTED && currentState < EngineStates::SHUTDOWN_NITROGEN_FLUSH_STARTED && ENABLE_LOGGING) {
     if (!nominalDataCheck(sensorData)) {
       startShutdown();
       currentState = EngineStates::SHUTDOWN_NITROGEN_FLUSH_STARTED;
@@ -115,6 +115,14 @@ void loop() {
   }
 
   // Handle any multi-step commands (inert flush, ignition, shutdown)
+
+  if (currentState == EngineStates::FUEL_PRESSURIZATION_STARTED) {
+    int currentTime = millis();
+    if ((currentTime - lastEventTime) > FUEL_PRESSURIZATION_DELAY){
+      openValve(PRESFUELVALVE);
+      currentState = EngineStates::FUEL_PRESSURIZATION_FINISHED;
+    }
+  }
 
   // Handling finishing the pre-burn inert flush
   if (currentState == EngineStates::PRE_BURN_NITROGEN_FLUSH_STARTED) {

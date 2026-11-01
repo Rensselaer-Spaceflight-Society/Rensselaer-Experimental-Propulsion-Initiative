@@ -14,11 +14,11 @@ constexpr int SHUTDOWN_VALVE = 30;
 
 // Analog Pins for Pressure Transducers
 // constexpr int PRESSSEN1 = A0;
-constexpr int PRESSSEN2 = A1;
-constexpr int PRESSSEN3 = A2;
-constexpr int PRESSSEN4 = A3;
-constexpr int PRESSSEN5 = A4;
-constexpr int PRESSSEN6 = A5;
+constexpr int PRESS_FUEL_FEED = A1;
+constexpr int PRESS_FUEL_TANK = A2;
+constexpr int PRESS_FUEL_LINE = A3;
+constexpr int PRESS_OXY_TANK = A4;
+constexpr int PRESS_OXY_LINE = A5;
 
 // Digital Pin for Load Cell
 constexpr int LOADCELL = 24;
@@ -46,11 +46,11 @@ void setupPins() {
   pinMode(OXIDIZERVALVE, OUTPUT);
   digitalWrite(OXIDIZERVALVE, LOW);
   scale.begin(LOADCELL, LOADCELL_SCK);
-  pinMode(PRESSSEN2, INPUT);
-  pinMode(PRESSSEN3, INPUT);
-  pinMode(PRESSSEN4, INPUT);
-  pinMode(PRESSSEN5, INPUT);
-  pinMode(PRESSSEN6, INPUT);
+  pinMode(PRESS_FUEL_FEED, INPUT);
+  pinMode(PRESS_FUEL_TANK, INPUT);
+  pinMode(PRESS_FUEL_LINE, INPUT);
+  pinMode(PRESS_OXY_TANK, INPUT);
+  pinMode(PRESS_OXY_LINE, INPUT);
   pinMode(THERMOCPL1, INPUT);
   pinMode(THERMOCPL2, INPUT);
   pinMode(THERMOCPL3, INPUT);
