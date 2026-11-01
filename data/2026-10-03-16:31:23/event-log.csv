@@ -1,0 +1,16 @@
+UNIX Time (ms), Local Time, Countdown Time, Event Type, Message 
+1791059488372, 16:31:28.372, T-00:35.000, [COMMAND SENT] , LogStart Sent to Motor
+1791059488375, 16:31:28.375, T-00:35.000, [SIGNAL] , LogStart was received. 
+1791059493452, 16:31:33.452, T-00:29.960, [COMMAND SENT] , PresFuel Sent to Motor
+1791059493466, 16:31:33.466, T-00:29.950, [SIGNAL] , PresFuel was received. 
+1791059513293, 16:31:53.293, T-00:19.960, [COMMAND SENT] , Shutdown Sent to Motor
+1791059513307, 16:31:53.307, T-00:19.950, [SIGNAL] , Shutdown was received. 
+1791059513307, 16:31:53.307, T-00:19.950, [INFO] , Engine Shutdown Started
+1791059513308, 16:31:53.308, T-00:19.950, [SIGNAL] , ShutConf was received. 
+1791059513308, 16:31:53.308, T-00:19.950, [INFO] , Engine Shutdown Completed
+1791059554333, 16:32:34.333, T-00:19.950, [COMMAND SENT] , Shutdown Sent to Motor
+1791059554374, 16:32:34.374, T-00:19.950, [COMMAND SENT] , Shutdown Sent to Motor
+1791059554413, 16:32:34.413, T-00:19.950, [COMMAND SENT] , Shutdown Sent to Motor
+1791059554453, 16:32:34.453, T-00:19.950, [COMMAND SENT] , Shutdown Sent to Motor
+1791059554493, 16:32:34.493, T-00:19.950, [COMMAND SENT] , Shutdown Sent to Motor
+1791059554533, 16:32:34.533, T-00:19.950, [COMMAND FAIL] , Shutdown was sent 5 times without acknowledgement.

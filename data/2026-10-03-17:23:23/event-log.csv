@@ -1,0 +1,10 @@
+UNIX Time (ms), Local Time, Countdown Time, Event Type, Message 
+1791062604308, 17:23:24.308, T-00:40.000, [COMMAND SENT] , LogStart Sent to Motor
+1791062604312, 17:23:24.312, T-00:40.000, [SIGNAL] , LogStart was received. 
+1791062614428, 17:23:34.428, T-00:29.960, [COMMAND SENT] , PresFuel Sent to Motor
+1791062614436, 17:23:34.436, T-00:29.950, [SIGNAL] , PresFuel was received. 
+1791062625189, 17:23:45.189, T-00:19.950, [COMMAND SENT] , Shutdown Sent to Motor
+1791062625199, 17:23:45.199, T-00:19.940, [SIGNAL] , Shutdown was received. 
+1791062625199, 17:23:45.199, T-00:19.940, [INFO] , Engine Shutdown Started
+1791062625200, 17:23:45.200, T-00:19.940, [SIGNAL] , ShutConf was received. 
+1791062625200, 17:23:45.200, T-00:19.940, [INFO] , Engine Shutdown Completed

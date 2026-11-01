@@ -1,0 +1,30 @@
+UNIX Time (ms), Local Time, Countdown Time, Event Type, Message 
+1791059687217, 16:34:47.217, T-00:35.000, [COMMAND SENT] , LogStart Sent to Motor
+1791059687221, 16:34:47.221, T-00:35.000, [SIGNAL] , LogStart was received. 
+1791059689184, 16:34:49.184, T-00:33.080, [SIGNAL] , InvldCom was received. 
+1791059689184, 16:34:49.184, T-00:33.080, [WARNING] , The engine indicated that it received an invalid command.
+1791059689185, 16:34:49.185, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059689188, 16:34:49.188, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059689188, 16:34:49.188, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059689188, 16:34:49.188, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059689188, 16:34:49.188, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059689188, 16:34:49.188, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059689189, 16:34:49.189, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059689189, 16:34:49.189, T-00:33.080, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690543, 16:34:50.543, T-00:31.720, [SIGNAL] , InvldCom was received. 
+1791059690543, 16:34:50.543, T-00:31.720, [WARNING] , The engine indicated that it received an invalid command.
+1791059690545, 16:34:50.545, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690547, 16:34:50.547, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690548, 16:34:50.548, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690548, 16:34:50.548, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690548, 16:34:50.548, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690548, 16:34:50.548, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690548, 16:34:50.548, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059690548, 16:34:50.548, T-00:31.720, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1791059692296, 16:34:52.296, T-00:29.970, [COMMAND SENT] , PresFuel Sent to Motor
+1791059692300, 16:34:52.300, T-00:29.970, [SIGNAL] , PresFuel was received. 
+1791059711061, 16:35:11.061, T-00:19.960, [COMMAND SENT] , Shutdown Sent to Motor
+1791059711061, 16:35:11.061, T-00:19.960, [SIGNAL] , Shutdown was received. 
+1791059711061, 16:35:11.061, T-00:19.960, [INFO] , Engine Shutdown Started
+1791059711061, 16:35:11.061, T-00:19.950, [SIGNAL] , ShutConf was received. 
+1791059711061, 16:35:11.061, T-00:19.950, [INFO] , Engine Shutdown Completed

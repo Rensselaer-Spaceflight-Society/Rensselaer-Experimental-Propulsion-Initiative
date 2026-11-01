@@ -1,0 +1,9 @@
+UNIX Time (ms), Local Time, Countdown Time, Event Type, Message 
+1791060174689, 16:42:54.689, T-00:40.000, [COMMAND SENT] , Shutdown Sent to Motor
+1791060174729, 16:42:54.729, T-00:40.000, [COMMAND SENT] , Shutdown Sent to Motor
+1791060174769, 16:42:54.769, T-00:40.000, [COMMAND SENT] , Shutdown Sent to Motor
+1791060174809, 16:42:54.809, T-00:40.000, [COMMAND SENT] , Shutdown Sent to Motor
+1791060174849, 16:42:54.849, T-00:40.000, [COMMAND SENT] , Shutdown Sent to Motor
+1791060174889, 16:42:54.889, T-00:40.000, [COMMAND FAIL] , Shutdown was sent 5 times without acknowledgement.
+1791060405169, 16:46:45.169, T-00:40.000, [COMMAND SENT] , CtrlActi Sent to Motor
+1791060405172, 16:46:45.172, T-00:40.000, [SIGNAL] , CtrlActi was received. 
