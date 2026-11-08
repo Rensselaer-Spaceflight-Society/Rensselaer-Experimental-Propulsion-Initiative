@@ -23,6 +23,7 @@
 #include "usart.h"
 #include "gpio.h"
 #include "radio.h"
+#include "packet.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -33,6 +34,10 @@
 
 #ifndef CALLSIGN
 #error  "You must provide a callsign at Compile Time"
+#endif
+
+#ifndef BOARD_ADDR
+#error  "You must provide an address for this board at Compile Time"
 #endif
 
 /* USER CODE END Includes */
@@ -162,6 +167,9 @@ int main(void)
   HAL_UART_Transmit(&huart2, (uint8_t *)uartBuff, strlen(uartBuff), HAL_MAX_DELAY);
   sprintf(uartBuff, "FSK_MODULATION\r\nFSK_BW=%d Hz\r\nFSK_DR=%d bits/s\r\n", FSK_BANDWIDTH, FSK_DATARATE);
   HAL_UART_Transmit(&huart2, (uint8_t *)uartBuff, strlen(uartBuff), HAL_MAX_DELAY);
+
+  Command commands[] = {};
+  packetInit(BOARD_ADDR, 0, NULL);
   radioInit();
 
   /* USER CODE END 2 */

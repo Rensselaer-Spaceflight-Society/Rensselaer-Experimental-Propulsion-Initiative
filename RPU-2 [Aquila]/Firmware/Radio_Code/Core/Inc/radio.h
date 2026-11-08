@@ -9,6 +9,7 @@
 #define INC_RADIO_H_
 #include "radio_driver.h"
 #include "usart.h"
+#include "packet.h"
 
 #include <string.h>
 
@@ -28,14 +29,6 @@
 
 #define PACKET_START (0b111110 << 2)
 #define PACKET_START_LEN 8
-
-
-typedef enum {
-	CONTROL_BOARD = 0,
-	FILL_CONTROL = 1,
-	DAQ_CONTROL = 2,
-	RESERVED = 3
-} board;
 
 typedef enum
 {

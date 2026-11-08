@@ -8,14 +8,9 @@
 #include "radio.h"
 #include "usart.h"
 
-#ifndef BOARD_ADDR
-#error  "You must provide an address for this board at Compile Time"
-#endif
-
 
 void (*volatile eventReceptor)(pingPongFSM_t *const fsm);
 PacketParams_t packetParams;  // TODO: this is lazy...
-uint8_t sendAddr;
 
 void radioInit(void)
 {

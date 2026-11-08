@@ -10,7 +10,7 @@ typedef enum {
 	RESERVED = 3
 } Board;
 
-uint8_t init(Board des_recAddr, uint8_t des_commandLength, Command des_commands[]);
+uint8_t packetInit(Board des_recAddr, uint8_t des_commandLength, Command des_commands[]);
 int8_t parsePacket(uint8_t *packet, size_t length);
 
 #endif
