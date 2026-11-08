@@ -1,0 +1,19 @@
+# Ignore everything...
+/*
+
+# ...except the hand-written application code
+!/.gitignore
+!/Core/
+
+# Build artifacts, in case any land inside Core/
+*.d
+*.o
+*.obj
+*.a
+*.elf
+*.map
+*.list
+*.bin
+*.hex
+*.su
+*.cyclo
