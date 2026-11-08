@@ -15,6 +15,7 @@
 
 void (*volatile eventReceptor)(pingPongFSM_t *const fsm);
 PacketParams_t packetParams;  // TODO: this is lazy...
+uint8_t sendAddr;
 
 void radioInit(void)
 {
@@ -45,7 +46,7 @@ void radioInit(void)
   SUBGRF_SetModulationParams(&modulationParams);
 
   packetParams.PacketType = PACKET_TYPE_GFSK;
-  packetParams.Params.Gfsk.AddrComp = RADIO_ADDRESSCOMP_FILT_NODE;
+  packetParams.Params.Gfsk.AddrComp = RADIO_ADDRESSCOMP_FILT_OFF;
   packetParams.Params.Gfsk.CrcLength = RADIO_CRC_2_BYTES_CCIT;
   packetParams.Params.Gfsk.DcFree = RADIO_DC_FREEWHITENING;
   packetParams.Params.Gfsk.HeaderType = RADIO_PACKET_VARIABLE_LENGTH;
@@ -58,7 +59,7 @@ void radioInit(void)
   SUBGRF_SetSyncWord(CALLSIGN);
 
   SUBGRF_SetWhiteningSeed(0x01FF);
-  setNodeAddress(BOARD_ADDR);
+//  setNodeAddress(BOARD_ADDR);
 //  setBroadcastAddress(0x01);
 }
 
