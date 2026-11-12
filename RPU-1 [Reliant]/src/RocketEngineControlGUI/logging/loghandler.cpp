@@ -71,9 +71,9 @@ bool LogHandler::initialize()
     dataStream << "UNIX Time (ms), "<< "Local Time, " << "Countdown Time, " << "Load Cell (N), "
                << "Kerosene Inlet (c), " << "Oxidizer Inlet (c), "
                << "Throat (c), " << "Nozzle Outlet (c), "
-               << "Combustion Chamber (kPa), " << "Kerosene Feed Line (kPa), "
-               << "Kerosene Tank (kPa), " << "Kerosene Line (kPa), "
-               << "Oxidizer Tank (kPa), " << "Oxidizer Line (kPa)"
+               << "Combustion Chamber (PSI), " << "Kerosene Feed Line (PSI), "
+               << "Kerosene Tank (PSI), " << "Kerosene Line (PSI), "
+               << "Oxidizer Tank (PSI), " << "Oxidizer Line (PSI)"
                << "\n";
 
     eventStream << "UNIX Time (ms), " << "Local Time, " << "Countdown Time, " << "Event Type, "

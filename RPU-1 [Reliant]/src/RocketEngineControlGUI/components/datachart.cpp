@@ -74,7 +74,7 @@ void DataChart::setChartType(ChartType chartType)
     {
         series->setColor(QColor(101, 179, 242, 64));
         series->setBorderColor(QColor(73, 132, 178));
-        axisY->setTitleText("Pressure (kPa)");
+        axisY->setTitleText("Pressure (PSI)");
     }
     else
     {
