@@ -6,6 +6,7 @@
  */
 
 #include "radio.h"
+#include "packet.h"
 
 
 
@@ -123,24 +124,29 @@ void eventRxDone(pingPongFSM_t *const fsm)
 	// Todo: Remove outter switch statement. Maybe use a def flag, if def mastered ifndef slave.
 	// Todo: Access char buffer and maybe use that directly. pass this to packet.c.
   Command desiredCommand = NULL;
-  int8_t packetCode = parsePacket(desiredCommand, &fsm->rxBuffer[1], fsm->rxSize - 1);
+  int8_t packetCode = parsePacket(&desiredCommand, &fsm->rxBuffer[1], fsm->rxSize - 1);
   HAL_UART_Transmit(&huart2, (uint8_t *)"Event RX Done\r\n", 15, HAL_MAX_DELAY);
   switch (fsm->subState) {
     case SSTATE_RX:
       transitionRxDone(fsm);
       switch(packetCode) {
-        case 0:
-          // Packet intended for us, TODO: acknowledge and execute command. After rewriting parsePacket
-          enterTx(fsm);
-          fsm->subState = SSTATE_TX;
-          break;
-        default:
-          // 1 = Packet not intended for us, go back to listening
+        case -1:
+        case -2:
+        case -3:
+        // -3 = Packet not intended for us, go back to listening
           // Any other = error, wait for packet to be re-sent
           // TODO: log error for debugging?
           enterRx(fsm);
           HAL_UART_Transmit(&huart2, (uint8_t *)fsm->rxBuffer, strlen(fsm->rxBuffer), HAL_MAX_DELAY);
-        break;
+          break;
+        default:
+          // Packet intended for us, TODO: acknowledge and execute command. After rewriting parsePacket
+          uint8_t *packet = NULL;
+          uint8_t packetSize = createPacket(packet, CONTROL_BOARD, packetCode, 0, 0);
+          enterTx(fsm, packet, packetSize);
+          fsm->subState = SSTATE_TX;
+          desiredCommand(&fsm->rxBuffer[2]);
+          break;
       }
     default:
       break;
@@ -156,29 +162,12 @@ void eventRxDone(pingPongFSM_t *const fsm)
 void eventTxTimeout(pingPongFSM_t *const fsm)
 {
   HAL_UART_Transmit(&huart2, (uint8_t *)"Event TX Timeout\r\n", 18, HAL_MAX_DELAY);
-  switch (fsm->state)
+
+  switch (fsm->subState)
   {
-    case STATE_MASTER:
-      switch (fsm->subState)
-      {
-        case SSTATE_TX:
-          enterRx(fsm);
-          fsm->subState = SSTATE_RX;
-          break;
-        default:
-          break;
-      }
-      break;
-    case STATE_SLAVE:
-      switch (fsm->subState)
-      {
-        case SSTATE_TX:
-          enterSlaveRx(fsm);
-          fsm->subState = SSTATE_RX;
-          break;
-        default:
-          break;
-      }
+    case SSTATE_TX:
+      enterRx(fsm);
+      fsm->subState = SSTATE_RX;
       break;
     default:
       break;
@@ -194,33 +183,14 @@ void eventTxTimeout(pingPongFSM_t *const fsm)
 void eventRxTimeout(pingPongFSM_t *const fsm)
 {
   HAL_UART_Transmit(&huart2, (uint8_t *)"Event RX Timeout\r\n", 18, HAL_MAX_DELAY);
-  switch (fsm->state)
-  {
-    case STATE_MASTER:
-      switch (fsm->subState)
-      {
-        case SSTATE_RX:
-          HAL_Delay(fsm->randomDelay);
-          enterMasterTx(fsm);
-          fsm->subState = SSTATE_TX;
-          break;
-        default:
-          break;
-      }
-      break;
-    case STATE_SLAVE:
-      switch (fsm->subState)
-      {
-        case SSTATE_RX:
-          enterSlaveRx(fsm);
-          break;
-        default:
-          break;
-      }
-      break;
-    default:
-      break;
-  }
+    switch (fsm->subState)
+    {
+      case SSTATE_RX:
+        enterRx(fsm);
+        break;
+      default:
+        break;
+    }
 }
 
 
@@ -232,29 +202,10 @@ void eventRxTimeout(pingPongFSM_t *const fsm)
 void eventRxError(pingPongFSM_t *const fsm)
 {
   HAL_UART_Transmit(&huart2, (uint8_t *)"Event Rx Error\r\n", 16, HAL_MAX_DELAY);
-  switch (fsm->state)
+  switch (fsm->subState)
   {
-    case STATE_MASTER:
-      switch (fsm->subState)
-      {
-        case SSTATE_RX:
-          HAL_Delay(fsm->randomDelay);
-          enterMasterTx(fsm);
-          fsm->subState = SSTATE_TX;
-          break;
-        default:
-          break;
-      }
-      break;
-    case STATE_SLAVE:
-      switch (fsm->subState)
-      {
-        case SSTATE_RX:
-          enterSlaveRx(fsm);
-          break;
-        default:
-          break;
-      }
+    case SSTATE_RX:
+      enterRx(fsm);
       break;
     default:
       break;

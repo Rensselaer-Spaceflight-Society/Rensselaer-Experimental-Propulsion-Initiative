@@ -35,7 +35,7 @@ uint8_t packetInit(Board des_recAddr, uint8_t des_commandLength, Command des_com
  * @param length Length of packet
  * @return Returns status.
  */
-int8_t parsePacket(Command *desiredCommand, uint8_t *packet, size_t length) {
+int8_t parsePacket(Command *desiredCommand, char *packet, size_t length) {
     desiredCommand = NULL;
     if(length == 0) {
         return -1; 
@@ -43,7 +43,7 @@ int8_t parsePacket(Command *desiredCommand, uint8_t *packet, size_t length) {
 
     Board address = (Board)(packet[0] >> 6);
     if (address != recAddr) {
-        return 1;
+        return -3;
     }
     uint8_t command = packet[0] & 0x3f;
 
@@ -53,13 +53,14 @@ int8_t parsePacket(Command *desiredCommand, uint8_t *packet, size_t length) {
     // Command is saved to the passed pointer. Parameters are not returned as this method should be called after sending
     // an ack packet. Parameters are passed via the packet struct, just pass the pointer incremented by 1.
     // Ex: desiredCommand(packet + 1) <- Ignore the packet with the address/desired command.
-    desiredCommand = commands[command];
-    return 0;
+    desiredCommand = &commands[command];
+    return command;
 }
 
-int8_t createPacket(uint8_t *packet, Board dest, uint8_t command, uint8_t *payload, uint8_t payload_size) {
+uint8_t createPacket(uint8_t *packet, Board dest, uint8_t command, uint8_t *payload, uint8_t payload_size) {
 	uint8_t new_packet[1 + payload_size];
 	memcpy(new_packet + 1, payload, payload_size);
 	new_packet[0] = (dest << 6) | command;
 	packet = new_packet;
+    return 1 + payload_size;
 }

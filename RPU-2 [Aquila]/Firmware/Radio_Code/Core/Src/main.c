@@ -75,6 +75,11 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+void theBestCommand(uint8_t* payload) {
+  char uartBuff[100];
+  sprintf(uartBuff, "Message Recieved! %u\r\n", payload[0]);
+  HAL_UART_Transmit(&huart2, (uint8_t *)uartBuff, strlen(uartBuff), HAL_MAX_DELAY);
+}
 /* USER CODE END 0 */
 
 /**
@@ -168,8 +173,10 @@ int main(void)
   sprintf(uartBuff, "FSK_MODULATION\r\nFSK_BW=%d Hz\r\nFSK_DR=%d bits/s\r\n", FSK_BANDWIDTH, FSK_DATARATE);
   HAL_UART_Transmit(&huart2, (uint8_t *)uartBuff, strlen(uartBuff), HAL_MAX_DELAY);
 
-  Command commands[] = {};
-  packetInit(BOARD_ADDR, 0, NULL);
+  Command commands[] = {
+    &theBestCommand
+  };
+  packetInit(BOARD_ADDR, 1, commands);
   radioInit();
 
   /* USER CODE END 2 */
@@ -182,7 +189,6 @@ int main(void)
   SUBGRF_SetDioIrqParams(IRQ_RADIO_NONE, IRQ_RADIO_NONE, IRQ_RADIO_NONE, IRQ_RADIO_NONE);
   rnd = SUBGRF_GetRandom();
 
-  fsm.state = STATE_NULL;
   fsm.subState = SSTATE_NULL;
   fsm.rxTimeout = 3000; // 3000 ms
   fsm.rxMargin = 200;   // 200 ms
@@ -197,12 +203,24 @@ int main(void)
                           IRQ_RADIO_NONE );
   SUBGRF_SetSwitch(RFO_LP, RFSWITCH_RX);
   SUBGRF_SetRx(fsm.rxTimeout << 6);
-  fsm.state = STATE_MASTER;
   fsm.subState = SSTATE_RX;
 
   while (1)
   {
     /* USER CODE END WHILE */
+    // wait for character from serial console
+    if(BOARD_ADDR == CONTROL_BOARD) {
+      if (HAL_UART_Receive(&huart2, (uint8_t *)uartBuff, 1, HAL_MAX_DELAY) == HAL_OK) {
+        if (uartBuff[0] == 't') {
+          // send a packet to the other board
+          uint8_t *packet = NULL;
+          uint8_t packetSize = createPacket(packet, CONTROL_BOARD, 0b00000000, 0, 0);
+          enterTx(&fsm, packet, packetSize);
+          fsm.subState = SSTATE_TX;
+        }
+      }
+    }
+
 
     /* USER CODE BEGIN 3 */
 
@@ -212,6 +230,7 @@ int main(void)
   }
   /* USER CODE END 3 */
 }
+
 
 /**
   * @brief System Clock Configuration

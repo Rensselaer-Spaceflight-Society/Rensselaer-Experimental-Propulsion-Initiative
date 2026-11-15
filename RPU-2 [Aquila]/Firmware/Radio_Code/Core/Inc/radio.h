@@ -66,10 +66,8 @@ void eventRxDone(pingPongFSM_t *const fsm);
 void eventTxTimeout(pingPongFSM_t *const fsm);
 void eventRxTimeout(pingPongFSM_t *const fsm);
 void eventRxError(pingPongFSM_t *const fsm);
-void enterMasterRx(pingPongFSM_t *const fsm);
-void enterSlaveRx(pingPongFSM_t *const fsm);
-void enterMasterTx(pingPongFSM_t *const fsm);
-void enterSlaveTx(pingPongFSM_t *const fsm);
+void enterRx(pingPongFSM_t *const fsm);
+void enterTx(pingPongFSM_t *const fsm, uint8_t* packet, uint8_t packetSize);
 void transitionRxDone(pingPongFSM_t *const fsm);
 
 void setNodeAddress(uint8_t node_address);
