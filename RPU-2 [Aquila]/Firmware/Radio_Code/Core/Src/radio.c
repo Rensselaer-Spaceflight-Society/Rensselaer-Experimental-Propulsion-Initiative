@@ -6,7 +6,7 @@
  */
 
 #include "radio.h"
-#include "usart.h"
+
 
 #ifndef BOARD_ADDR
 #error  "You must provide an address for this board at Compile Time"
@@ -106,29 +106,11 @@ void RadioOnDioIrq(RadioIrqMasks_t radioIrq)
 void eventTxDone(pingPongFSM_t *const fsm)
 {
   HAL_UART_Transmit(&huart2, (uint8_t *)"Event TX Done\r\n", 15, HAL_MAX_DELAY);
-  switch (fsm->state)
+  switch (fsm->subState)
   {
-    case STATE_MASTER:
-      switch (fsm->subState)
-      {
-        case SSTATE_TX:
-          enterMasterRx(fsm);
-          fsm->subState = SSTATE_RX;
-          break;
-        default:
-          break;
-      }
-      break;
-    case STATE_SLAVE:
-      switch (fsm->subState)
-      {
-        case SSTATE_TX:
-          enterSlaveRx(fsm);
-          fsm->subState = SSTATE_RX;
-          break;
-        default:
-          break;
-      }
+    case SSTATE_TX:
+      enterRx(fsm);
+      fsm->subState = SSTATE_RX;
       break;
     default:
       break;
@@ -143,58 +125,28 @@ void eventTxDone(pingPongFSM_t *const fsm)
   */
 void eventRxDone(pingPongFSM_t *const fsm)
 {
+	// Todo: Remove outter switch statement. Maybe use a def flag, if def mastered ifndef slave.
+	// Todo: Access char buffer and maybe use that directly. pass this to packet.c.
+  Command desiredCommand = NULL;
+  int8_t packetCode = parsePacket(desiredCommand, &fsm->rxBuffer[1], fsm->rxSize - 1);
   HAL_UART_Transmit(&huart2, (uint8_t *)"Event RX Done\r\n", 15, HAL_MAX_DELAY);
-  switch(fsm->state)
-  {
-    case STATE_MASTER:
-      switch (fsm->subState)
-      {
-        case SSTATE_RX:
-          transitionRxDone(fsm);
-          if (strncmp(&fsm->rxBuffer[1], "PONG", 4) == 0)
-          {
-            BSP_LED_Off(LED_GREEN);
-            BSP_LED_Toggle(LED_RED);
-            enterMasterTx(fsm);
-            fsm->subState = SSTATE_TX;
-          }
-          else if (strncmp(&fsm->rxBuffer[1], "PING", 4) == 0)
-          {
-            enterSlaveRx(fsm);
-            fsm->state = STATE_SLAVE;
-          }
-          else
-          {
-            enterMasterRx(fsm);
-            HAL_UART_Transmit(&huart2, (uint8_t *)fsm->rxBuffer, strlen(fsm->rxBuffer), HAL_MAX_DELAY);
-          }
+  switch (fsm->subState) {
+    case SSTATE_RX:
+      transitionRxDone(fsm);
+      switch(packetCode) {
+        case 0:
+          // Packet intended for us, TODO: acknowledge and execute command. After rewriting parsePacket
+          enterTx(fsm);
+          fsm->subState = SSTATE_TX;
           break;
         default:
-          break;
+          // 1 = Packet not intended for us, go back to listening
+          // Any other = error, wait for packet to be re-sent
+          // TODO: log error for debugging?
+          enterRx(fsm);
+          HAL_UART_Transmit(&huart2, (uint8_t *)fsm->rxBuffer, strlen(fsm->rxBuffer), HAL_MAX_DELAY);
+        break;
       }
-      break;
-    case STATE_SLAVE:
-      switch (fsm->subState)
-      {
-        case SSTATE_RX:
-          transitionRxDone(fsm);
-          if (strncmp(&fsm->rxBuffer[1], "PING", 4) == 0)
-          {
-            BSP_LED_Off(LED_RED);
-            BSP_LED_Toggle(LED_GREEN);
-            enterSlaveTx(fsm);
-            fsm->subState = SSTATE_TX;
-          }
-          else
-          {
-            enterMasterRx(fsm);
-            fsm->state = STATE_MASTER;
-          }
-          break;
-        default:
-          break;
-      }
-      break;
     default:
       break;
   }
@@ -215,7 +167,7 @@ void eventTxTimeout(pingPongFSM_t *const fsm)
       switch (fsm->subState)
       {
         case SSTATE_TX:
-          enterMasterRx(fsm);
+          enterRx(fsm);
           fsm->subState = SSTATE_RX;
           break;
         default:
@@ -316,32 +268,12 @@ void eventRxError(pingPongFSM_t *const fsm)
 
 
 /**
-  * @brief  Entry actions for the RX sub-state of the Master state
+  * @brief  Entry actions for the RX sub-state
   * @param  fsm pointer to FSM context
   * @retval None
   */
-void enterMasterRx(pingPongFSM_t *const fsm)
+void enterRx(pingPongFSM_t *const fsm)
 {
-  HAL_UART_Transmit(&huart2, (uint8_t *)"Master Rx start\r\n", 17, HAL_MAX_DELAY);
-  SUBGRF_SetDioIrqParams( IRQ_RX_DONE | IRQ_RX_TX_TIMEOUT | IRQ_CRC_ERROR,
-                          IRQ_RX_DONE | IRQ_RX_TX_TIMEOUT | IRQ_CRC_ERROR,
-                          IRQ_RADIO_NONE,
-                          IRQ_RADIO_NONE );
-  SUBGRF_SetSwitch(RFO_LP, RFSWITCH_RX);
-  packetParams.Params.Gfsk.PayloadLength = 0xFE;
-  SUBGRF_SetPacketParams(&packetParams);
-  SUBGRF_SetRx(fsm->rxTimeout << 6);
-}
-
-
-/**
-  * @brief  Entry actions for the RX sub-state of the Slave state
-  * @param  fsm pointer to FSM context
-  * @retval None
-  */
-void enterSlaveRx(pingPongFSM_t *const fsm)
-{
-  HAL_UART_Transmit(&huart2, (uint8_t *)"Slave Rx start\r\n", 16, HAL_MAX_DELAY);
   SUBGRF_SetDioIrqParams( IRQ_RX_DONE | IRQ_RX_TX_TIMEOUT | IRQ_CRC_ERROR,
                           IRQ_RX_DONE | IRQ_RX_TX_TIMEOUT | IRQ_CRC_ERROR,
                           IRQ_RADIO_NONE,
@@ -358,12 +290,11 @@ void enterSlaveRx(pingPongFSM_t *const fsm)
   * @param  fsm pointer to FSM context
   * @retval None
   */
-void enterMasterTx(pingPongFSM_t *const fsm)
+void enterTx(pingPongFSM_t *const fsm, uint8_t* packet, uint8_t packetSize)
 {
   HAL_Delay(fsm->rxMargin);
 
-  HAL_UART_Transmit(&huart2, (uint8_t *)"...PING\r\n", 9, HAL_MAX_DELAY);
-  HAL_UART_Transmit(&huart2, (uint8_t *)"Master Tx start\r\n", 17, HAL_MAX_DELAY);
+  HAL_UART_Transmit(&huart2, (uint8_t *)"Tx start\r\n", 17, HAL_MAX_DELAY);
   SUBGRF_SetDioIrqParams( IRQ_TX_DONE | IRQ_RX_TX_TIMEOUT,
                           IRQ_TX_DONE | IRQ_RX_TX_TIMEOUT,
                           IRQ_RADIO_NONE,
@@ -371,38 +302,10 @@ void enterMasterTx(pingPongFSM_t *const fsm)
   SUBGRF_SetSwitch(RFO_LP, RFSWITCH_TX);
   // Workaround 5.1 in DS.SX1261-2.W.APP (before each packet transmission)
   SUBGRF_WriteRegister(0x0889, (SUBGRF_ReadRegister(0x0889) | 0x04));
-  packetParams.Params.Gfsk.PayloadLength = 0x5;
+  packetParams.Params.Gfsk.PayloadLength = packetSize + 1; // TODO: Should +1? check if works
   SUBGRF_SetPacketParams(&packetParams);
-  uint8_t packet[] = { 0x00, 'P', 'I', 'N', 'G' };
   SUBGRF_SendPayload(packet, packetParams.Params.Gfsk.PayloadLength, 0);
 }
-
-
-/**
-  * @brief  Entry actions for the TX sub-state of the Slave state
-  * @param  fsm pointer to FSM context
-  * @retval None
-  */
-void enterSlaveTx(pingPongFSM_t *const fsm)
-{
-  HAL_Delay(fsm->rxMargin);
-
-  HAL_UART_Transmit(&huart2, (uint8_t *)"...PONG\r\n", 9, HAL_MAX_DELAY);
-  HAL_UART_Transmit(&huart2, (uint8_t *)"Slave Tx start\r\n", 16, HAL_MAX_DELAY);
-  SUBGRF_SetDioIrqParams( IRQ_TX_DONE | IRQ_RX_TX_TIMEOUT,
-                          IRQ_TX_DONE | IRQ_RX_TX_TIMEOUT,
-                          IRQ_RADIO_NONE,
-                          IRQ_RADIO_NONE );
-  SUBGRF_SetSwitch(RFO_LP, RFSWITCH_TX);
-  // Workaround 5.1 in DS.SX1261-2.W.APP (before each packet transmission)
-  SUBGRF_WriteRegister(0x0889, (SUBGRF_ReadRegister(0x0889) | 0x04));
-  packetParams.Params.Gfsk.PayloadLength = 0x5;
-  SUBGRF_SetPacketParams(&packetParams);
-
-  uint8_t packet[] = { 0x00, 'P', 'O', 'N', 'G' };
-  SUBGRF_SendPayload(packet, packetParams.Params.Gfsk.PayloadLength, 0);
-}
-
 
 /**
   * @brief  Transition actions executed on every RX Done event (helper function)

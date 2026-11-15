@@ -29,21 +29,6 @@
 #define PACKET_START (0b111110 << 2)
 #define PACKET_START_LEN 8
 
-
-typedef enum {
-	CONTROL_BOARD = 0,
-	FILL_CONTROL = 1,
-	DAQ_CONTROL = 2,
-	RESERVED = 3
-} board;
-
-typedef enum
-{
-  STATE_NULL,
-  STATE_MASTER,
-  STATE_SLAVE
-} state_t;
-
 typedef enum
 {
   SSTATE_NULL,
@@ -53,7 +38,6 @@ typedef enum
 
 typedef struct
 {
-  state_t state;
   substate_t subState;
   uint32_t rxTimeout;
   uint32_t rxMargin;

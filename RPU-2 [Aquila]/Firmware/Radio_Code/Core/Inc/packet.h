@@ -1,6 +1,10 @@
 #ifndef __PACKET_H
 #define __PACKET_H
 
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+
 typedef void (*Command)(uint8_t*);
 
 typedef enum {

@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdint.h>
 #include "packet.h"
 
 Command *commands; // Create a list of function pointers. Take list of 8 bit characters
@@ -37,7 +35,8 @@ uint8_t init(Board des_recAddr, uint8_t des_commandLength, Command des_commands[
  * @param length Length of packet
  * @return Returns status.
  */
-int8_t parsePacket(uint8_t *packet, size_t length) {
+int8_t parsePacket(Command *desiredCommand, uint8_t *packet, size_t length) {
+    desiredCommand = NULL;
     if(length == 0) {
         return -1; 
     }
@@ -51,6 +50,16 @@ int8_t parsePacket(uint8_t *packet, size_t length) {
     if(command >= commandsLength) {
         return -2;
     }
-    commands[command](packet + 1);
+    // Command is saved to the passed pointer. Parameters are not returned as this method should be called after sending
+    // an ack packet. Parameters are passed via the packet struct, just pass the pointer incremented by 1.
+    // Ex: desiredCommand(packet + 1) <- Ignore the packet with the address/desired command.
+    desiredCommand = commands[command];
     return 0;
+}
+
+int8_t createPacket(uint8_t *packet, Board dest, uint8_t command, uint8_t *payload, uint8_t payload_size) {
+	uint8_t new_packet[1 + payload_size];
+	memcpy(new_packet + 1, payload, payload_size);
+	new_packet[0] = (dest << 6) | command;
+	packet = new_packet;
 }
