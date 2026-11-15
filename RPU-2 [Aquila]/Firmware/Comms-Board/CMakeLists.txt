@@ -21,6 +21,8 @@ endif()
 # Set the project name
 set(CMAKE_PROJECT_NAME Comms-Board)
 
+set(COMMON_DIR ${CMAKE_CURRENT_LIST_DIR}/../common)
+
 # Enable compile command to ease indexing with e.g. clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
@@ -50,6 +52,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    ${COMMON_DIR}
 )
 
 # Add project symbols (macros)
@@ -63,6 +66,6 @@ list(REMOVE_ITEM CMAKE_C_IMPLICIT_LINK_LIBRARIES ob)
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
+    subspace # Only need Subspace for the comms board
     # Add user defined libraries
 )

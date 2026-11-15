@@ -4,9 +4,6 @@
  Author  :   Bardia Alikhan Afshar <bardia.a.afshar@gmail.com>
  Date    :   2026-07-23
 *************************************************************************************/
-
-#ifndef MAX31855_H
-#define MAX31855_H
 #ifndef MAX31855_H
 #define MAX31855_H
 
@@ -112,4 +109,3 @@ MAX31855_Status_t MAX31855_GetInternalTemperatureC(const MAX31855_Handle_t * max
 #endif /* MAX31855_H */
 
 
-#endif /* MAX31855_H */

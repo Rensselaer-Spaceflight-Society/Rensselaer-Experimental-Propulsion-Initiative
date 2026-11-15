@@ -34,13 +34,8 @@
 #ifndef ADS7128_H
 #define ADS7128_H
 
-#ifndef ADS7128_H
-#define ADS7128_H
-
 #include <stdint.h>
-#include <stm32wlxx_hal.h>
-#include "stm32wlxx_hal_def.h"
-#include "stm32wlxx_hal_i2c.h"
+#include "stm32wlxx_hal.h"
 
 #define ADS7128_GPIO_ANALOG_INPUT 0b00
 #define ADS7128_GPIO_DIGITAL_INPUT 0b01
@@ -417,8 +412,5 @@ HAL_StatusTypeDef ADS7128_GetAlertEvents(const ADS7128_HandleTypeDef *hadc,
 HAL_StatusTypeDef ADS7128_ClearAlertEvents(const ADS7128_HandleTypeDef *hadc,
                                            uint8_t high_channel_mask,
                                            uint8_t low_channel_mask);
-
-#endif /* ADS7128_H */
-
 
 #endif /* ADS7128_H */

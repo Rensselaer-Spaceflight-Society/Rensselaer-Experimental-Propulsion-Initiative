@@ -21,6 +21,8 @@ endif()
 # Set the project name
 set(CMAKE_PROJECT_NAME Engine-Control)
 
+set(COMMON_DIR ${CMAKE_CURRENT_LIST_DIR}/../common)
+
 # Enable compile command to ease indexing with e.g. clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
@@ -37,6 +39,13 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
+# Add Common Sources
+add_subdirectory(${COMMON_DIR}/SubSpace common/subspace)
+add_subdirectory(${COMMON_DIR}/Plumber common/plumber)
+add_subdirectory(${COMMON_DIR}/ADS7128 common/ads7128)
+add_subdirectory(${COMMON_DIR}/MAX31855 common/max31855)
+add_subdirectory(${COMMON_DIR}/HX711 common/hx711)
+
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
@@ -50,6 +59,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    ${COMMON_DIR}
 )
 
 # Add project symbols (macros)
@@ -63,6 +73,10 @@ list(REMOVE_ITEM CMAKE_C_IMPLICIT_LINK_LIBRARIES ob)
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
+    subspace 
+    ads7128
+    hx711
+    max31855
+    plumber
     # Add user defined libraries
 )
