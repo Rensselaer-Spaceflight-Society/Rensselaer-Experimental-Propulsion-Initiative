@@ -1,0 +1,120 @@
+UNIX Time (ms), Local Time, Countdown Time, Event Type, Message 
+1794618946697, 20:15:46.697, T-00:40.000, [COMMAND SENT] , LogStart Sent to Motor
+1794618946699, 20:15:46.699, T-00:40.000, [SIGNAL] , LogStart was received. 
+1794618953460, 20:15:53.460, T-00:33.280, [SIGNAL] , InvldCom was received. 
+1794618953460, 20:15:53.460, T-00:33.280, [WARNING] , The engine indicated that it received an invalid command.
+1794618953461, 20:15:53.461, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618953463, 20:15:53.463, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618953463, 20:15:53.463, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618953463, 20:15:53.463, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618953463, 20:15:53.463, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618953464, 20:15:53.464, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618953464, 20:15:53.464, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618953464, 20:15:53.464, T-00:33.280, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955700, 20:15:55.700, T-00:31.040, [SIGNAL] , InvldCom was received. 
+1794618955700, 20:15:55.700, T-00:31.040, [WARNING] , The engine indicated that it received an invalid command.
+1794618955701, 20:15:55.701, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955702, 20:15:55.702, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955703, 20:15:55.703, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955703, 20:15:55.703, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955703, 20:15:55.703, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955703, 20:15:55.703, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955703, 20:15:55.703, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618955704, 20:15:55.704, T-00:31.040, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618956777, 20:15:56.777, T-00:29.960, [COMMAND SENT] , PresFuel Sent to Motor
+1794618956784, 20:15:56.784, T-00:29.960, [SIGNAL] , PresFuel was received. 
+1794618966420, 20:16:06.420, T-00:20.350, [SIGNAL] , InvldCom was received. 
+1794618966420, 20:16:06.420, T-00:20.350, [WARNING] , The engine indicated that it received an invalid command.
+1794618966421, 20:16:06.421, T-00:20.350, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618966422, 20:16:06.422, T-00:20.340, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618966423, 20:16:06.423, T-00:20.340, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618966423, 20:16:06.423, T-00:20.340, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618966423, 20:16:06.423, T-00:20.340, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618966423, 20:16:06.423, T-00:20.340, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618966423, 20:16:06.423, T-00:20.340, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618966424, 20:16:06.424, T-00:20.340, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968180, 20:16:08.180, T-00:19.990, [SIGNAL] , InvldCom was received. 
+1794618968180, 20:16:08.180, T-00:19.990, [WARNING] , The engine indicated that it received an invalid command.
+1794618968181, 20:16:08.181, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968183, 20:16:08.183, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968183, 20:16:08.183, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968183, 20:16:08.183, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968183, 20:16:08.183, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968184, 20:16:08.184, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968184, 20:16:08.184, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968184, 20:16:08.184, T-00:19.990, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618968897, 20:16:08.897, T-00:19.950, [COMMAND SENT] , Shutdown Sent to Motor
+1794618968910, 20:16:08.910, T-00:19.940, [SIGNAL] , Shutdown was received. 
+1794618968910, 20:16:08.910, T-00:19.940, [INFO] , Engine Shutdown Started
+1794618968911, 20:16:08.911, T-00:19.940, [SIGNAL] , ShutConf was received. 
+1794618968911, 20:16:08.911, T-00:19.940, [INFO] , Engine Shutdown Completed
+1794618997420, 20:16:37.420, T-00:19.940, [SIGNAL] , InvldCom was received. 
+1794618997420, 20:16:37.420, T-00:19.940, [WARNING] , The engine indicated that it received an invalid command.
+1794618997421, 20:16:37.421, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618997422, 20:16:37.422, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618997423, 20:16:37.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618997423, 20:16:37.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618997423, 20:16:37.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618997423, 20:16:37.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618997423, 20:16:37.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794618997423, 20:16:37.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027060, 20:17:07.060, T-00:19.940, [SIGNAL] , InvldCom was received. 
+1794619027060, 20:17:07.060, T-00:19.940, [WARNING] , The engine indicated that it received an invalid command.
+1794619027061, 20:17:07.061, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027063, 20:17:07.063, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027063, 20:17:07.063, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027063, 20:17:07.063, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027063, 20:17:07.063, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027063, 20:17:07.063, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027064, 20:17:07.064, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619027064, 20:17:07.064, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036420, 20:17:16.420, T-00:19.940, [SIGNAL] , InvldCom was received. 
+1794619036420, 20:17:16.420, T-00:19.940, [WARNING] , The engine indicated that it received an invalid command.
+1794619036421, 20:17:16.421, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036422, 20:17:16.422, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036423, 20:17:16.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036423, 20:17:16.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036423, 20:17:16.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036423, 20:17:16.423, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036424, 20:17:16.424, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619036424, 20:17:16.424, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070140, 20:17:50.140, T-00:19.940, [SIGNAL] , InvldCom was received. 
+1794619070140, 20:17:50.140, T-00:19.940, [WARNING] , The engine indicated that it received an invalid command.
+1794619070141, 20:17:50.141, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070142, 20:17:50.142, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070143, 20:17:50.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070143, 20:17:50.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070143, 20:17:50.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070144, 20:17:50.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070144, 20:17:50.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619070144, 20:17:50.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074140, 20:17:54.140, T-00:19.940, [SIGNAL] , InvldCom was received. 
+1794619074140, 20:17:54.140, T-00:19.940, [WARNING] , The engine indicated that it received an invalid command.
+1794619074141, 20:17:54.141, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074142, 20:17:54.142, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074143, 20:17:54.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074143, 20:17:54.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074144, 20:17:54.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074144, 20:17:54.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074144, 20:17:54.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619074144, 20:17:54.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093140, 20:18:13.140, T-00:19.940, [SIGNAL] , InvldCom was received. 
+1794619093140, 20:18:13.140, T-00:19.940, [WARNING] , The engine indicated that it received an invalid command.
+1794619093141, 20:18:13.141, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093143, 20:18:13.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093143, 20:18:13.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093143, 20:18:13.143, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093144, 20:18:13.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093144, 20:18:13.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093144, 20:18:13.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619093144, 20:18:13.144, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099380, 20:18:19.380, T-00:19.940, [SIGNAL] , InvldCom was received. 
+1794619099380, 20:18:19.380, T-00:19.940, [WARNING] , The engine indicated that it received an invalid command.
+1794619099381, 20:18:19.381, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099383, 20:18:19.383, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099383, 20:18:19.383, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099383, 20:18:19.383, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099383, 20:18:19.383, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099384, 20:18:19.384, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099384, 20:18:19.384, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619099384, 20:18:19.384, T-00:19.940, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 

@@ -28,7 +28,7 @@ float processThermocoupleValue(int analogSignal) {
 
 float read_loadcell(HX711 &scale) {
   static float load_cell = 0;
-  
+
   if (scale.is_ready()) {
     load_cell = ((float)(scale.read() + 2383.0) / 904.0 - 10);
   }
@@ -70,17 +70,27 @@ void readSensorData(Sensors &sensorData) {
 
   sensorData.loadCell = read_loadcell(scale);
 
-  sensorData.pressure[0] = 0; // This sensor is unused and so we always return 0.
-  sensorData.pressure[1] = processPressureValue500PSIG(analogRead(PRESS_FUEL_FEED));
+  sensorData.pressure[0] = 0;  // This sensor is unused and so we always return 0.
+  sensorData.pressure[1] = 0;  // This sensor is unused and so we always return 0.
+  sensorData.pressure[3] = 0;  // This sensor is unused and so we always return 0.
+  sensorData.pressure[4] = 0;  // This sensor is unused and so we always return 0.
+  sensorData.pressure[5] = 0;  // This sensor is unused and so we always return 0.
+  // sensorData.pressure[1] = processPressureValue500PSIG(analogRead(PRESS_FUEL_FEED));
   sensorData.pressure[2] = processPressureValue500PSIG(analogRead(PRESS_FUEL_TANK));
-  sensorData.pressure[3] = processPressureValue500PSIG(analogRead(PRESS_FUEL_LINE));
-  sensorData.pressure[4] = processPressureValue1000PSIG(analogRead(PRESS_OXY_TANK));
-  sensorData.pressure[5] = processPressureValue1000PSIG(analogRead(PRESS_OXY_LINE));
+  // sensorData.pressure[3] = processPressureValue500PSIG(analogRead(PRESS_FUEL_LINE));
+  // sensorData.pressure[4] = processPressureValue1000PSIG(analogRead(PRESS_OXY_TANK));
+  // sensorData.pressure[5] = processPressureValue1000PSIG(analogRead(PRESS_OXY_LINE));
 
-  sensorData.thermocouple[0] = processThermocoupleValue(analogRead(THERMOCPL1));
-  sensorData.thermocouple[1] = processThermocoupleValue(analogRead(THERMOCPL2));
-  sensorData.thermocouple[2] = processThermocoupleValue(analogRead(THERMOCPL3));
-  sensorData.thermocouple[3] = processThermocoupleValue(analogRead(THERMOCPL4));
+  // sensorData.thermocouple[0] = processThermocoupleValue(analogRead(THERMOCPL1));
+  // sensorData.thermocouple[1] = processThermocoupleValue(analogRead(THERMOCPL2));
+  // sensorData.thermocouple[2] = processThermocoupleValue(analogRead(THERMOCPL3));
+  // sensorData.thermocouple[3] = processThermocoupleValue(analogRead(THERMOCPL4));
+
+  sensorData.thermocouple[0] = 0;
+  sensorData.thermocouple[1] = 0;
+  sensorData.thermocouple[2] = 0;
+  sensorData.thermocouple[3] = 0;
+
 
   // Compute the checksum for the sensor data
   checksum12(&sensorData.checkSum, &sensorData, 52);
@@ -92,19 +102,19 @@ void readSensorData(Sensors &sensorData) {
   memcpy(&sensorData.header, HEADER, 8);
 
   // TODO: Handle reading from the Load Cell
-  sensorData.loadCell =  ((float) rand()) / RAND_MAX * 20 + 1;
+  sensorData.loadCell = ((float)rand()) / RAND_MAX * 20 + 1;
 
-  sensorData.pressure[0] =  0;
-  sensorData.pressure[1] =  ((float) rand()) / RAND_MAX * 20 + 1;
-  sensorData.pressure[2] =  ((float) rand()) / RAND_MAX * 20 + 1;
-  sensorData.pressure[3] =  ((float) rand()) / RAND_MAX * 20 + 1;
-  sensorData.pressure[4] =  ((float) rand()) / RAND_MAX * 20 + 1;
-  sensorData.pressure[5] =  ((float) rand()) / RAND_MAX * 20 + 1;
+  sensorData.pressure[0] = 0;
+  sensorData.pressure[1] = ((float)rand()) / RAND_MAX * 20 + 1;
+  sensorData.pressure[2] = ((float)rand()) / RAND_MAX * 20 + 1;
+  sensorData.pressure[3] = ((float)rand()) / RAND_MAX * 20 + 1;
+  sensorData.pressure[4] = ((float)rand()) / RAND_MAX * 20 + 1;
+  sensorData.pressure[5] = ((float)rand()) / RAND_MAX * 20 + 1;
 
-  sensorData.thermocouple[0] =  ((float) rand()) / RAND_MAX * 20 + 1;
-  sensorData.thermocouple[1] =  ((float) rand()) / RAND_MAX * 20 + 1;
-  sensorData.thermocouple[2] =  ((float) rand()) / RAND_MAX * 20 + 1;
-  sensorData.thermocouple[3] =  ((float) rand()) / RAND_MAX * 20 + 1;
+  sensorData.thermocouple[0] = ((float)rand()) / RAND_MAX * 20 + 1;
+  sensorData.thermocouple[1] = ((float)rand()) / RAND_MAX * 20 + 1;
+  sensorData.thermocouple[2] = ((float)rand()) / RAND_MAX * 20 + 1;
+  sensorData.thermocouple[3] = ((float)rand()) / RAND_MAX * 20 + 1;
 
   // Compute the checksum for the sensor data
   checksum12(&sensorData.checkSum, &sensorData, 52);

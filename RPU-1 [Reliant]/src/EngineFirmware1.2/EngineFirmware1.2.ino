@@ -51,7 +51,7 @@ void loop() {
   }
 
   // Read Sensor Data, Send it back, and validate it
-  if (currentState >= EngineStates::LOG_START && currentState != EngineStates::SHUTDOWN_CONFIRMED && ENABLE_LOGGING) {
+  if (currentState >= EngineStates::LOG_START && ENABLE_LOGGING) {
     uint64_t currentTime = millis();
     if ((currentTime - lastDataTransmissionTime) >= MINIMUM_DATA_TRANSMIT_TIME_MS) {
       readSensorData(sensorData);

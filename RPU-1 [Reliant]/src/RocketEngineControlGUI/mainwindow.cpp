@@ -93,6 +93,7 @@ void MainWindow::handleStartCountdown()
     if(currentState == EngineStates::SHUTDOWN_COMPLETE)
     {
         currentState = EngineStates::CONNECTION_ESTABLISHED;
+        countdown->stop();
         countdownMs = COUNTDOWN_LENGTH_MS;
         pastAutoHold = false;
         ui->AbortButton->setDisabled(true);
@@ -367,13 +368,15 @@ void MainWindow::hanldleSignalReceived(const QString & signal)
     {
         if(signal == SHUTDOWN_CONFIRMED)
         {
+            // Keep the rows in memory until the test is reset so the disk log is written once
+            logger.beginDeferredWrites();
             logger.logEvent(countdownMs, EventType::Info, "Engine Shutdown Completed");
             currentState = EngineStates::SHUTDOWN_COMPLETE;
             ui->AbortButton->setText("Shutdown Complete");
             ui->AbortButton->setDisabled(true);
             ui->EngineStatus->setText("Shutdown Complete");
             ui->StartCountdown->setText("Reset Test");
-            countdown->stop();
+            // The countdown timer keeps running so the charts and log timestamps keep advancing
             ui->StartCountdown->setEnabled(true);
             return;
         }

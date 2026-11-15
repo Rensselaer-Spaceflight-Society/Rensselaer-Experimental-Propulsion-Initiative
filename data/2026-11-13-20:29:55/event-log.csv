@@ -1,0 +1,30 @@
+UNIX Time (ms), Local Time, Countdown Time, Event Type, Message 
+1794619798425, 20:29:58.425, T-00:40.000, [COMMAND SENT] , LogStart Sent to Motor
+1794619798428, 20:29:58.428, T-00:40.000, [SIGNAL] , LogStart was received. 
+1794619808505, 20:30:08.505, T-00:29.980, [COMMAND SENT] , PresFuel Sent to Motor
+1794619808513, 20:30:08.513, T-00:29.980, [SIGNAL] , PresFuel was received. 
+1794619815945, 20:30:15.945, T-00:23.310, [COMMAND SENT] , Shutdown Sent to Motor
+1794619815951, 20:30:15.951, T-00:23.300, [SIGNAL] , Shutdown was received. 
+1794619815952, 20:30:15.952, T-00:23.300, [INFO] , Engine Shutdown Started
+1794619815953, 20:30:15.953, T-00:23.300, [SIGNAL] , ShutConf was received. 
+1794619815954, 20:30:15.954, T-00:23.300, [INFO] , Engine Shutdown Completed
+1794619823828, 20:30:23.828, T-00:15.510, [SIGNAL] , InvldCom was received. 
+1794619823828, 20:30:23.828, T-00:15.510, [WARNING] , The engine indicated that it received an invalid command.
+1794619823829, 20:30:23.829, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619823831, 20:30:23.831, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619823831, 20:30:23.831, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619823831, 20:30:23.831, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619823831, 20:30:23.831, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619823832, 20:30:23.832, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619823832, 20:30:23.832, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619823832, 20:30:23.832, T-00:15.510, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826068, 20:30:26.068, T-00:13.270, [SIGNAL] , InvldCom was received. 
+1794619826068, 20:30:26.068, T-00:13.270, [WARNING] , The engine indicated that it received an invalid command.
+1794619826069, 20:30:26.069, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826071, 20:30:26.071, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826071, 20:30:26.071, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826071, 20:30:26.071, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826071, 20:30:26.071, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826071, 20:30:26.071, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826072, 20:30:26.072, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 
+1794619826072, 20:30:26.072, T-00:13.270, [CORRUPTED DATA] , 8 Bytes of Corrupted Data recieved and logged. 

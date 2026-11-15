@@ -33,6 +33,10 @@ public:
     static QString formatCountdown(int countdownMS);
     bool restartLogs();
 
+    // While deferred, log rows are held in memory instead of being written to disk.
+    // They are written out when restartLogs() is called (or on destruction).
+    void beginDeferredWrites();
+
 public slots:
     void logData(int countdownClockMS, const SensorData & data);
     void logEvent(int countdownClockMS, EventType eventType, const QString & message);
@@ -42,9 +46,16 @@ protected:
     bool openFile(QFile & fileToOpen);
 
 private:
+    void writeOrDefer(QTextStream & stream, QStringList & pending, const QString & line);
+    void flushDeferredWrites();
+    void closeLogs();
+
     QString outputPath;
     QFile dataLog, eventLog, corruptionLog;
     QTextStream dataStream, eventStream, corruptionStream;
+
+    bool deferWrites = false;
+    QStringList pendingDataLines, pendingEventLines, pendingCorruptionLines;
 };
 
 #endif // LOGHANDLER_H

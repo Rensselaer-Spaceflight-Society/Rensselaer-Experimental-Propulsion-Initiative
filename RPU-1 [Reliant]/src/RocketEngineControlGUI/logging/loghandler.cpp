@@ -9,9 +9,9 @@ LogHandler::LogHandler(
 
 LogHandler::~LogHandler()
 {
-    if(eventLog.isOpen()) eventLog.close();
-    if(dataLog.isOpen()) dataLog.close();
-    if(corruptionLog.isOpen()) corruptionLog.close();
+    // Don't lose any rows that were held back waiting for a reset
+    flushDeferredWrites();
+    closeLogs();
 }
 
 bool LogHandler::initialize()
@@ -109,11 +109,73 @@ QString LogHandler::formatCountdown(int countdownMS)
 
 bool LogHandler::restartLogs()
 {
-    if(eventLog.isOpen()) eventLog.close();
-    if(dataLog.isOpen()) dataLog.close();
-    if(corruptionLog.isOpen()) corruptionLog.close();
+    // Write out anything held back during the shutdown-complete period into the
+    // current log files before they are closed and replaced
+    flushDeferredWrites();
+    closeLogs();
 
     return initialize();
+}
+
+void LogHandler::beginDeferredWrites()
+{
+    deferWrites = true;
+}
+
+void LogHandler::closeLogs()
+{
+    if(dataLog.isOpen())
+    {
+        dataStream.flush();
+        dataLog.close();
+    }
+    if(eventLog.isOpen())
+    {
+        eventStream.flush();
+        eventLog.close();
+    }
+    if(corruptionLog.isOpen())
+    {
+        corruptionStream.flush();
+        corruptionLog.close();
+    }
+}
+
+void LogHandler::flushDeferredWrites()
+{
+    deferWrites = false;
+
+    if(dataLog.isOpen())
+    {
+        for(const QString & line: pendingDataLines) dataStream << line;
+        dataStream.flush();
+    }
+    if(eventLog.isOpen())
+    {
+        for(const QString & line: pendingEventLines) eventStream << line;
+        eventStream.flush();
+    }
+    if(corruptionLog.isOpen())
+    {
+        for(const QString & line: pendingCorruptionLines) corruptionStream << line;
+        corruptionStream.flush();
+    }
+
+    pendingDataLines.clear();
+    pendingEventLines.clear();
+    pendingCorruptionLines.clear();
+}
+
+void LogHandler::writeOrDefer(QTextStream & stream, QStringList & pending, const QString & line)
+{
+    if(deferWrites)
+    {
+        pending.append(line);
+    }
+    else
+    {
+        stream << line;
+    }
 }
 
 void LogHandler::logData(int countdownClockMS, const SensorData & data)
@@ -122,14 +184,18 @@ void LogHandler::logData(int countdownClockMS, const SensorData & data)
     QString localTime = QDateTime::currentDateTime().toString("HH:mm:ss.zzz");
     QString countdownTime = formatCountdown(countdownClockMS);
 
-    dataStream << unixTime << ", " << localTime << ", " << countdownTime << ", " << data.loadCell
+    QString line;
+    QTextStream lineStream(&line);
+    lineStream << unixTime << ", " << localTime << ", " << countdownTime << ", " << data.loadCell
                << ", " << data.thermocouple[0] << ", " << data.thermocouple[1]
                << ", " << data.thermocouple[2] << ", " << data.thermocouple[3]
                << ", " << data.pressureTransducer[0] << ", " << data.pressureTransducer[1]
                << ", " << data.pressureTransducer[2] << ", " << data.pressureTransducer[3]
                << ", " << data.pressureTransducer[4] << ", " << data.pressureTransducer[5]
                << "\n";
+    lineStream.flush();
 
+    writeOrDefer(dataStream, pendingDataLines, line);
 }
 
 void LogHandler::logEvent(int countdownClockMS, EventType eventType, const QString & message)
@@ -169,8 +235,13 @@ void LogHandler::logEvent(int countdownClockMS, EventType eventType, const QStri
             break;
     }
 
-        eventStream << unixTime << ", " << localTime << ", " << countdownTime << ", "
-                << messageType << ", " << message << "\n";
+    QString line;
+    QTextStream lineStream(&line);
+    lineStream << unixTime << ", " << localTime << ", " << countdownTime << ", "
+               << messageType << ", " << message << "\n";
+    lineStream.flush();
+
+    writeOrDefer(eventStream, pendingEventLines, line);
 }
 
 void LogHandler::logCorruptedData(int countdownClockMS, const QByteArray & corruptedData)
@@ -179,9 +250,13 @@ void LogHandler::logCorruptedData(int countdownClockMS, const QByteArray & corru
     QString localTime = QDateTime::currentDateTime().toString("HH:mm:ss.zzz");
     QString countdownTime = formatCountdown(countdownClockMS);
 
-    corruptionStream << unixTime << ", " << localTime << ", " << countdownTime << ", "
-                     << (corruptedData).size() << ", " << (corruptedData).toHex() << "\n";
+    QString line;
+    QTextStream lineStream(&line);
+    lineStream << unixTime << ", " << localTime << ", " << countdownTime << ", "
+               << (corruptedData).size() << ", " << (corruptedData).toHex() << "\n";
+    lineStream.flush();
 
+    writeOrDefer(corruptionStream, pendingCorruptionLines, line);
 }
 
 bool LogHandler::openFile(QFile & fileToOpen)
