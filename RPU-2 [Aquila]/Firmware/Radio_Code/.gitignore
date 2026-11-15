@@ -1,4 +1,3 @@
-Debug
-.metadata
-.cproject
-.settings
+build
+cmake/flags.cmake
+stm32cubeide-export.json

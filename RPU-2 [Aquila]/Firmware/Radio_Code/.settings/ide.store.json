@@ -1,0 +1,11 @@
+{
+  "board": "NUCLEO-WL55JC2",
+  "device": "STM32WL55JCI6",
+  "core": "Cortex-M4",
+  "pname": "CM4",
+  "order": 0,
+  "toolchain": "GCC",
+  "source": {
+    "sourceType": "STM32CubeIDE"
+  }
+}
