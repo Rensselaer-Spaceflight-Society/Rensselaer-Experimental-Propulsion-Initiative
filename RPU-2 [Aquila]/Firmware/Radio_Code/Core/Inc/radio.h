@@ -9,6 +9,7 @@
 #define INC_RADIO_H_
 #include "radio_driver.h"
 #include "usart.h"
+#include "packet.h"
 
 #include <string.h>
 
@@ -28,6 +29,13 @@
 
 #define PACKET_START (0b111110 << 2)
 #define PACKET_START_LEN 8
+
+typedef enum
+{
+  STATE_NULL,
+  STATE_MASTER,
+  STATE_SLAVE
+} state_t;
 
 typedef enum
 {

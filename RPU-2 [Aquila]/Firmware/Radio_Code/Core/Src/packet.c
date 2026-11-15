@@ -13,7 +13,7 @@ Board recAddr;
  * @param des_commands The list of desired commands in the form of a Command typedef.
  * @return Returns status.
  */
-uint8_t init(Board des_recAddr, uint8_t des_commandLength, Command des_commands[]) {
+uint8_t packetInit(Board des_recAddr, uint8_t des_commandLength, Command des_commands[]) {
     if(des_commands == NULL) {
         return -1;
     }
